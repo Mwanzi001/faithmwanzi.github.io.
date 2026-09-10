@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faith Ndungwa Mwanzi — Finance & Grants Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F1EA;
+    --paper-line:#DAD5C6;
+    --ink:#20241F;
+    --ink-soft:#565B52;
+    --navy:#1E2A2C;
+    --ledger:#2F6F5E;
+    --ledger-dark:#204F42;
+    --gold:#A9832F;
+    --white:#FFFFFF;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--navy);
+  }
+  a{color:inherit;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+
+  /* subtle ledger-paper texture on the whole page */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;
+    z-index:0;
+    background-image:repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 34px,
+      rgba(32,42,44,0.035) 35px
+    );
+  }
+  .wrap, header, footer{position:relative;z-index:1;}
+
+  /* ---------- Header / hero ---------- */
+  header{
+    background:var(--navy);
+    color:var(--paper);
+    padding:56px 0 0;
+    opacity:0;
+    animation:fadeIn .7s ease forwards;
+  }
+  @keyframes fadeIn{ to{opacity:1;} }
+
+  .name{
+    font-size:clamp(32px,5vw,44px);
+    color:var(--white);
+    letter-spacing:-0.01em;
+  }
+  .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    letter-spacing:0.04em;
+    color:var(--ledger);
+    margin-top:10px;
+    display:inline-block;
+    background:rgba(255,255,255,0.06);
+    padding:5px 10px;
+    border:1px solid rgba(255,255,255,0.14);
+  }
+  .summary{
+    max-width:58ch;
+    margin-top:22px;
+    color:#CDD3CC;
+    font-size:16px;
+  }
+  .contact-row{
+    margin-top:26px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    font-size:14px;
+    padding-bottom:36px;
+    border-bottom:1px solid rgba(255,255,255,0.15);
+  }
+  .contact-row a{
+    color:#DCE3DD;
+    text-decoration:none;
+    border-bottom:1px solid rgba(220,227,221,0.35);
+    padding-bottom:2px;
+  }
+  .contact-row a:hover{border-color:var(--ledger);color:#fff;}
+
+  /* ledger stat strip */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+  }
+  .stat{
+    padding:20px 16px 22px;
+    border-right:1px solid rgba(255,255,255,0.12);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .num{
+    font-family:'Source Serif 4', serif;
+    font-size:clamp(22px,3vw,30px);
+    color:var(--white);
+    font-weight:600;
+  }
+  .stat .label{
+    font-size:12.5px;
+    color:#AEB6AC;
+    margin-top:4px;
+  }
+
+  /* ---------- Sections ---------- */
+  section{padding:52px 0;}
+  .section-title{
+    font-size:24px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--ink);
+    margin-bottom:26px;
+  }
+  section + section{border-top:1px solid var(--paper-line);}
+
+  /* Skills */
+  .skill-group{margin-bottom:20px;}
+  .skill-group h3{
+    font-size:15px;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600;
+    color:var(--ledger-dark);
+    margin-bottom:8px;
+  }
+  .skill-list{
+    display:flex;flex-wrap:wrap;gap:8px 10px;
+    list-style:none;padding:0;margin:0;
+  }
+  .skill-list li{
+    font-size:13.5px;
+    padding:5px 11px;
+    border:1px solid var(--paper-line);
+    background:var(--white);
+    color:var(--ink-soft);
+  }
+
+  /* Experience */
+  .job{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:18px;
+    padding:22px 0;
+    border-top:1px solid var(--paper-line);
+  }
+  .job:first-of-type{border-top:none;}
+  .job .when{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    padding-top:3px;
+  }
+  .job h3{font-size:17px;}
+  .job .org{
+    font-size:13.5px;
+    color:var(--ledger-dark);
+    font-weight:500;
+    margin-top:2px;
+  }
+  .job ul{
+    margin:12px 0 0;
+    padding-left:18px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .job li{margin-bottom:6px;}
+
+  /* Featured work — report sheet cards */
+  .work-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+  }
+  .sheet{
+    background:var(--white);
+    border:1px solid var(--paper-line);
+    border-top:4px solid var(--ledger);
+    padding:20px 20px 18px;
+    clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%);
+  }
+  .sheet .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--gold);
+    letter-spacing:0.03em;
+  }
+  .sheet h3{font-size:16.5px;margin-top:6px;}
+  .sheet p{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:10px 0 14px;
+  }
+  .sheet .meta{
+    font-size:12px;
+    color:var(--ink-soft);
+    border-top:1px dashed var(--paper-line);
+    padding-top:10px;
+  }
+  .note{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:16px;
+    font-style:italic;
+  }
+
+  /* Education / Certs */
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .edu-item{margin-bottom:16px;}
+  .edu-item .deg{font-size:15px;font-weight:600;color:var(--navy);font-family:'Source Serif 4',serif;}
+  .edu-item .school{font-size:13.5px;color:var(--ink-soft);margin-top:2px;}
+  .edu-item .when{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--gold);margin-top:3px;}
+
+  .cert-list{list-style:none;padding:0;margin:0;font-size:14px;color:var(--ink-soft);}
+  .cert-list li{
+    padding:9px 0;
+    border-bottom:1px solid var(--paper-line);
+  }
+  .cert-list li:last-child{border-bottom:none;}
+
+  footer{
+    background:var(--navy);
+    color:#AEB6AC;
+    padding:34px 0;
+    font-size:13px;
+  }
+  footer a{color:var(--paper);text-decoration:underline;}
+  .footer-row{display:flex;flex-wrap:wrap;gap:18px;}
+
+  @media (max-width:640px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .stat{border-right:1px solid rgba(255,255,255,0.12);}
+    .stat:nth-child(2n){border-right:none;}
+    .stat:nth-child(3),.stat:nth-child(4){border-top:1px solid rgba(255,255,255,0.12);}
+    .job{grid-template-columns:1fr;}
+    .work-grid,.edu-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1 class="name">Faith Ndungwa Mwanzi</h1>
+    <span class="role">Finance &amp; Grants Manager</span>
+    <p class="summary">
+      Four years managing donor-funded programmes across Kenya — financial
+      reporting, budget monitoring, payroll and statutory compliance, and
+      audit-ready record keeping for projects backed by international and
+      national partners.
+    </p>
+    <div class="contact-row">
+      <a href="mailto:mwanzifaith001@gmail.com">mwanzifaith001@gmail.com</a>
+      <a href="tel:+254714059207">+254 714 059 207</a>
+      <a href="https://www.linkedin.com/in/faith-mwanzi-4aa816284" target="_blank" rel="noopener">linkedin.com/in/faith-mwanzi-4aa816284</a>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding:0;">
+    <div class="stats">
+      <div class="stat"><div class="num">9</div><div class="label">donor-funded projects managed</div></div>
+      <div class="stat"><div class="num">KES 20M+</div><div class="label">combined annual budgets</div></div>
+      <div class="stat"><div class="num">10+</div><div class="label">donors &amp; partners supported</div></div>
+      <div class="stat"><div class="num">100+</div><div class="label">financial reports delivered</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skill-group">
+      <h3>Donor compliance &amp; reporting</h3>
+      <ul class="skill-list">
+        <li>Grants management &amp; fiscal hosting</li>
+        <li>Donor financial reporting</li>
+        <li>Budget monitoring &amp; variance analysis</li>
+        <li>Multi-county programme coordination</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <h3>Financial operations</h3>
+      <ul class="skill-list">
+        <li>Payroll administration</li>
+        <li>Statutory compliance (PAYE, SHA, NSSF, NHIF)</li>
+        <li>Cash flow management</li>
+        <li>General ledger management</li>
+        <li>Audit coordination &amp; preparation</li>
+        <li>Financial risk management</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <h3>Tools</h3>
+      <ul class="skill-list">
+        <li>Advanced Microsoft Excel</li>
+        <li>QuickBooks</li>
+        <li>Kujabuild ERP (ADESO)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="job">
+      <div class="when">Jan 2026 &ndash;<br>Present</div>
+      <div>
+        <h3>Finance Manager</h3>
+        <div class="org">We Reach NGO</div>
+        <ul>
+          <li>Oversee finances for 9 donor-funded projects with combined annual budgets exceeding KES 20 million.</li>
+          <li>Prepare monthly financial reports, budget utilisation reports, and cash flow forecasts using Kujabuild ERP.</li>
+          <li>Run budget-versus-actual variance analysis and recommend improvements to resource utilisation.</li>
+          <li>Process payroll and remit statutory deductions (PAYE, SHA, NSSF, Housing Levy) with full compliance.</li>
+          <li>Coordinate reporting across funding partners and maintain audit-ready financial records.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Jun 2025 &ndash;<br>Present</div>
+      <div>
+        <h3>Finance Officer <span style="font-weight:400;color:var(--ink-soft);font-size:13px;">(part-time)</span></h3>
+        <div class="org">Rural to Global Organization</div>
+        <ul>
+          <li>Record and reconcile financial transactions in QuickBooks for internationally funded projects.</li>
+          <li>Prepare monthly financial reports and expenditure summaries for donor stakeholders.</li>
+          <li>Monitor expenditure trends and funding utilisation with programme teams.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Dec 2023 &ndash;<br>Dec 2025</div>
+      <div>
+        <h3>Finance &amp; Administration Officer</h3>
+        <div class="org">We Reach NGO</div>
+        <ul>
+          <li>Managed financial records, cashbooks, and monthly bank reconciliations in QuickBooks.</li>
+          <li>Prepared donor financial reports and supported budget monitoring.</li>
+          <li>Maintained fixed asset registers and procurement financial records; supported audit preparation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Jan 2019 &ndash;<br>Dec 2020</div>
+      <div>
+        <h3>Finance &amp; Administration Intern</h3>
+        <div class="org">Kakamega County Widow Empowerment Project</div>
+        <ul>
+          <li>Supported financial record management, payment processing, and bank reconciliations.</li>
+          <li>Assisted with financial reporting and payroll compliance documentation.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <h2 class="section-title">Featured work</h2>
+    <div class="work-grid">
+
+      <div class="sheet">
+        <div class="tag">QUARTERLY DONOR REPORT</div>
+        <h3>Multi-year financial report &amp; transaction tracker</h3>
+        <p>
+          A full donor reporting workbook: quarterly transaction logs, budget-versus-actual
+          by line item, currency reconciliation, and a payment request summary across a
+          three-year grant term.
+        </p>
+        <div class="meta">Format: Excel workbook, 20+ linked sheets</div>
+      </div>
+
+      <div class="sheet">
+        <div class="tag">BUDGET VS ACTUAL</div>
+        <h3>Grant budget tracker with monthly utilisation</h3>
+        <p>
+          Category-level budget tracker mapping approved amounts against monthly actuals,
+          with automatic balance and percent-utilised calculations across a 16-month
+          subaward term.
+        </p>
+        <div class="meta">Format: Excel workbook, category and summary views</div>
+      </div>
+
+    </div>
+    <p class="note">Sample reports shown are based on real work; organisation names, project names, and personnel have been replaced with placeholders to protect donor and partner confidentiality.</p>
+  </section>
+
+  <section id="education">
+    <h2 class="section-title">Education &amp; certification</h2>
+    <div class="edu-grid">
+      <div>
+        <div class="edu-item">
+          <div class="deg">Bachelor of Commerce, Accounting Option</div>
+          <div class="school">Kaimosi Friends University, Kenya &mdash; First Class Honours</div>
+          <div class="when">Dec 2023</div>
+        </div>
+        <div class="edu-item">
+          <div class="deg">Diploma, Business Management</div>
+          <div class="school">Kaimosi Friends University College, Kenya &mdash; Credit 1</div>
+          <div class="when">Dec 2020</div>
+        </div>
+      </div>
+      <div>
+        <ul class="cert-list">
+          <li>CPA &mdash; Advanced Level <span style="color:var(--gold);">(in progress)</span></li>
+          <li>CPA &mdash; Intermediate Level <span style="color:var(--ink-soft);">(2025)</span></li>
+          <li>CPA &mdash; Foundation Level <span style="color:var(--ink-soft);">(2023)</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>Faith Ndungwa Mwanzi</span>
+    <a href="mailto:mwanzifaith001@gmail.com">mwanzifaith001@gmail.com</a>
+    <a href="tel:+254714059207">+254 714 059 207</a>
+    <a href="https://www.linkedin.com/in/faith-mwanzi-4aa816284" target="_blank" rel="noopener">linkedin.com/in/faith-mwanzi-4aa816284</a>
+  </div>
+</footer>
+
+</body>
+</html>
